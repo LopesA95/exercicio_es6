@@ -1,17 +1,26 @@
-const alunos = [
-  { nome: "Ana", nota: 7 },
-  { nome: "João", nota: 5 },
-  { nome: "Maria", nota: 8 },
-  { nome: "Pedro", nota: 6 },
-  { nome: "Beatriz", nota: 9 },
-];
+class Aluno {
+  constructor(nome, nota) {
+    this.nome = nome;
+    this.nota = nota;
+  }
 
-function alunosAprovados(alunos) {
-  const alunosFiltrados = alunos.filter(aluno => aluno.nota >= 6);
-  return alunosFiltrados;
+  estáAprovado() {
+    return this.nota >= 6;
+  }
 }
 
-const alunosAcimaDe6 = alunosAprovados(alunos);
+const alunos = [
+  new Aluno("Ana", 7),
+  new Aluno("João", 5),
+  new Aluno("Maria", 8),
+  new Aluno("Pedro", 6),
+  new Aluno("Beatriz", 9),
+];
 
-console.log(alunosAcimaDe6);
+const alunosAprovados = alunos.filter(aluno => aluno.estáAprovado());
+
+console.log(`Alunos com nota acima de 6:`);
+alunosAprovados.forEach(aluno => console.log(`- ${aluno.nome} (${aluno.nota})`));
+
+
 
